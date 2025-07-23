@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.home.progressivetexture": {
-      "version": "file:Progressivetexture",
+      "version": "file:ProgressiveTexture",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
