@@ -29,6 +29,12 @@
 - [ ] Metal
 - [ ] Vulkan
 
+### Source Loading Features
+- [X] File from disk
+- [ ] File from http request
+- [ ] File from encode data
+- [ ] File from raw data
+
 ### Supported Features
 - [ ] Dynamic block size
 - [ ] Mipmap
@@ -77,5 +83,10 @@ Add in the manifest.json
 <a id="in-code"></a>
 #### In Code
 
+See example code in `Scripts/LoadTexture.cs`.
+
+```
+_renderer.material.SetTexture("_BaseMap", texture.Load(filePath, _renderer.material, "_BaseMap"));
+```
 <a id="unit-tests"></a>
 #### Unit Tests
