@@ -34,7 +34,14 @@ namespace ProgressiveTexture
 #endregion
 
 #region  Unity Callbacks
-        private void Start()
+
+        internal bool IsAvailable
+        {
+            private set;
+            get;
+        }
+
+        private void Awake()
         {
             Observable.EveryUpdate().Subscribe(_ =>
             {
@@ -60,6 +67,9 @@ namespace ProgressiveTexture
 
             string instanciatedContext = Wrappers.InstanciatedContext().IntPtrToString(true);
             Utils.Log("Instanciated Context: " + instanciatedContext, "green");
+
+            IsAvailable = Wrappers.IsAvailableContext();
+            Utils.Log("Context is available : " + IsAvailable, IsAvailable ? "green" : "red");
         }
 #endregion
     }

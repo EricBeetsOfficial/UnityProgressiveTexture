@@ -26,6 +26,9 @@ namespace ProgressiveTexture
         internal static extern IntPtr InstanciatedContext();
 
         [DllImport("UnityPlugin")]
+        internal static extern bool IsAvailableContext();
+
+        [DllImport("UnityPlugin")]
         internal static extern void ReleaseChar(IntPtr ptr);
 
         [DllImport("UnityPlugin")]

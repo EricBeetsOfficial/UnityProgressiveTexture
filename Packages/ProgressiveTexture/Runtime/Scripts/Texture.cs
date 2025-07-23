@@ -17,23 +17,27 @@ namespace ProgressiveTexture
         {
             ProgressiveTextureUpdate.Instance.Run();
 
-            _material = material;
-            _materialName = materialName;
-
-            Texture2D texture = new Texture2D(1, 1);
-            texture.name = Guid.NewGuid().ToString();
-            texture.SetPixel(0, 0, Color.red);
-            texture.Apply();
-
-            TextureParameter textureParameter = new TextureParameter()
+            if (ProgressiveTextureUpdate.Instance.IsAvailable)
             {
-                texturePtr = this.CreateHandle(),
-                texId = IntPtr.Zero,
-                guid = texture.name
-            };
-            Wrappers.LoadTexture(filePath, ref textureParameter);
+                _material = material;
+                _materialName = materialName;
 
-            return texture;
+                Texture2D texture = new Texture2D(1, 1);
+                texture.name = Guid.NewGuid().ToString();
+                texture.SetPixel(0, 0, Color.red);
+                texture.Apply();
+
+                TextureParameter textureParameter = new TextureParameter()
+                {
+                    texturePtr = this.CreateHandle(),
+                    texId = IntPtr.Zero,
+                    guid = texture.name
+                };
+                Wrappers.LoadTexture(filePath, ref textureParameter);
+
+                return texture;
+            }
+            return null;
         }
 
         public void ReplaceTexture(IntPtr texId, string guid)
