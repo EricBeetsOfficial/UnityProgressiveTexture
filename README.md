@@ -39,7 +39,7 @@
 - [ ] Dynamic block size
 - [ ] Mipmap
 - [ ] Gamma / Linear
-- [ ] Y Flip
+- [X] Y Flip
 
 <a id="clone"></a>
 ## Clone
@@ -86,7 +86,9 @@ Add in the manifest.json
 See example code in `Scripts/LoadTexture.cs`.
 
 ```
-_renderer.material.SetTexture("_BaseMap", texture.Load(filePath, _renderer.material, "_BaseMap"));
+ProgressiveTexture.Texture.Parameters parameters = new ProgressiveTexture.Texture.Parameters();
+..
+_renderer.material.SetTexture("_BaseMap", texture.Load(filePath, _renderer.material, "_BaseMap", parameters));
 ```
 <a id="unit-tests"></a>
 #### Unit Tests

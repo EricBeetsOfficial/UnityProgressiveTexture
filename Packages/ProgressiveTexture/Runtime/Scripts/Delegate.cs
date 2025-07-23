@@ -14,5 +14,6 @@ namespace ProgressiveTexture.Delegates
 
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 64)]
         public string guid;
+        public bool yFlip;
     }
 }
