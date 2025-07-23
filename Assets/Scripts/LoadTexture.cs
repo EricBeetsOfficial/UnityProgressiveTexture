@@ -18,7 +18,10 @@ public class LoadTexture : MonoBehaviour
         }).AddTo(this);
 
         string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "cat.jpg");
-
-        _renderer.material.SetTexture("_BaseMap", texture.Load(filePath, _renderer.material, "_BaseMap"));
+        ProgressiveTexture.Texture.Parameters parameters = new ProgressiveTexture.Texture.Parameters
+        {
+            yFlip = false,
+        };
+        _renderer.material.SetTexture("_BaseMap", texture.Load(filePath, _renderer.material, "_BaseMap", parameters));
     }
 }
