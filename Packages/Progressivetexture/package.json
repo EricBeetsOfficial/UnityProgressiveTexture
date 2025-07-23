@@ -3,5 +3,8 @@
   "displayName": "Progressive Texture",
   "version": "1.0.0",
   "unity": "6000.0",
-  "description": "Progressive Texture"
+  "description": "Progressive Texture",
+  "dependencies": {
+    "com.neuecc.unirx": "7.1.0"
+  }
 }

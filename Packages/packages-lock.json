@@ -1,17 +1,12 @@
 {
   "dependencies": {
-    "com.cysharp.unitask": {
-      "version": "2.5.5",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://package.openupm.com"
-    },
     "com.home.progressivetexture": {
-      "version": "file:com.home.progressivetexture",
+      "version": "file:Progressivetexture",
       "depth": 0,
       "source": "embedded",
-      "dependencies": {}
+      "dependencies": {
+        "com.neuecc.unirx": "7.1.0"
+      }
     },
     "com.neuecc.unirx": {
       "version": "7.1.0",
