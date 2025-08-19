@@ -3,7 +3,11 @@ using UniRx;
 
 public class LoadTexture : MonoBehaviour
 {
+    [SerializeField]
+    private bool _yFlip = false;
+
     private Renderer _renderer;
+
     void Start()
     {
         _renderer = GetComponent<Renderer>();
@@ -18,9 +22,9 @@ public class LoadTexture : MonoBehaviour
         }).AddTo(this);
 
         string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "cat.jpg");
-        ProgressiveTexture.Texture.Parameters parameters = new ProgressiveTexture.Texture.Parameters
+        ProgressiveTexture.Delegates.TextureParameter parameters = new ProgressiveTexture.Delegates.TextureParameter
         {
-            yFlip = false,
+            yFlip = _yFlip,
         };
         _renderer.material.SetTexture("_BaseMap", texture.Load(filePath, _renderer.material, "_BaseMap", parameters));
     }

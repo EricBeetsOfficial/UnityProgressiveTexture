@@ -7,23 +7,13 @@ namespace ProgressiveTexture
 {
     public class Texture
     {
-        public struct Parameters
-        {
-            public bool yFlip;
-
-            public Parameters(bool yFlip = false)
-            {
-                this.yFlip = yFlip;
-            }
-        }
-
         private readonly Subject<string> _onCreated = new Subject<string>();
         public IObservable<string> OnCompleted => _onCreated.AsObservable();
 
         private Material _material;
         private string _materialName;
 
-        public Texture2D Load(string filePath, Material material, string materialName, Parameters parameters)
+        public Texture2D Load(string filePath, Material material, string materialName, TextureParameter parameters)
         {
             ProgressiveTextureUpdate.Instance.Run();
 
@@ -37,14 +27,10 @@ namespace ProgressiveTexture
                 texture.SetPixel(0, 0, Color.red);
                 texture.Apply();
 
-                TextureParameter textureParameter = new TextureParameter()
-                {
-                    texturePtr = this.CreateHandle(),
-                    texId = IntPtr.Zero,
-                    guid = texture.name,
-                    yFlip = parameters.yFlip,
-                };
-                Wrappers.LoadTexture(filePath, ref textureParameter);
+                parameters.texturePtr = this.CreateHandle();
+                parameters.texId = IntPtr.Zero;
+                parameters.guid = texture.name;
+                Wrappers.LoadTexture(filePath, ref parameters);
 
                 return texture;
             }

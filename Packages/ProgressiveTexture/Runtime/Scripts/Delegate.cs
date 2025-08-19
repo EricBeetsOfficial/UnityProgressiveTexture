@@ -7,13 +7,14 @@ namespace ProgressiveTexture.Delegates
     internal delegate void DelegateCreatedTexture(ref TextureParameter textureCreated);
 
     [StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
-    internal struct TextureParameter
+    public struct TextureParameter
     {
-        public IntPtr texturePtr;
-        public IntPtr texId;
+        internal IntPtr texturePtr;
+        internal IntPtr texId;
+        internal IntPtr dxPtr;
 
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 64)]
-        public string guid;
+        internal string guid;
         public bool yFlip;
     }
 }
